@@ -1,0 +1,51 @@
+.container {
+    width: 60%;
+    margin: 30px auto;
+  }
+.chatarea {
+    height: 80vh;
+    background: #8DB4E5;
+    overflow: scroll;
+}
+#text{
+    resize: none;
+}
+
+#send{
+  color:bisque;
+}
+/* 
+.right{
+
+    max-width: 100px;
+    text-align: right;
+    width: auto;
+    margin-left: auto;
+    margin-right: 8px;
+    background-color: aquamarine;
+    border-radius: 5px;
+    overflow-wrap: break-word;
+} */
+
+.right {
+    max-width: 300px;
+    width: fit-content;
+    background-color: rgba(236, 34, 192, 0.34);
+    border-radius: 5px;
+    margin-right: 8px;
+    overflow-wrap: break-word;
+    margin-left: auto;
+
+}
+
+.left{
+
+    width: 100px;
+    background-color: rgb(243, 244, 244);
+    border-radius: 5px;
+    margin-left: 8px;
+}
+
+.messagearea{
+    margin-top: 8px;
+}

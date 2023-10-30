@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      
+      <div class="chatarea" id="output" style="overflow: auto; height: 600px">
+    
+    </div>
+      <div class="messagearea">
+        <textarea name="text" id="text" cols="65" rows="1" placeholder="Type message"></textarea>
+        <img src="./send.svg" alt="" id="send" width="20px" />
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        set,
+        onChildAdded,
+        remove,
+        onChildRemoved,
+      } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-database.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyBktTKUEL5n-liq45D1KEiC2rkyyvfh_8Y",
+        authDomain: "gskadai-e2915.firebaseapp.com",
+        projectId: "gskadai-e2915",
+        storageBucket: "gskadai-e2915.appspot.com",
+        messagingSenderId: "409728721302",
+        appId: "1:409728721302:web:66284fa927796396cbbdb7",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      const dbRef = ref(db, "chat"); //chatはfireベースに入れた名前
+
+      let name = "相手";
+
+      //prompt
+    //   const ask = (prompt("誰だ？"));
+      if ((prompt("誰だ？"))==="あかり"){
+        alert("Hello, Akari.");
+        name = "自分";
+      }else {
+        alert("Hello, guest.");
+      }
+
+
+      //クリックイベント、送信
+      $("#send").on("click", function () {
+        const msg = {
+          uname: name,  
+          text : $("#text").val()
+        };
+        const newPostRef = push(dbRef);
+        set(newPostRef, msg); //key,value
+        $("#text").val("");
+      });
+
+    //受信
+
+      onChildAdded(dbRef, function (data) {  //chatの情報を一つずつ取り出す
+        //(data)にデータが入ってくる
+        const dbmessage = data.val(); //firebaseからデータ取得、msgがオブジェクト変数で渡される
+        const key = data.key; //uniquekey keyは()つかない
+
+        let h = '<div class="';
+
+        if(name == "自分"){
+            if( dbmessage.uname === "自分"){
+                h += "right";
+            }else{
+                h += "left";
+            }
+        }else{
+            if( dbmessage.uname === "自分"){
+                h += "left";
+            }else{
+                h += "right";
+            }
+        }
+
+
+
+        h += '"><p>';
+        h += dbmessage.text;
+        h += '</p>';
+        h +='</div>';
+
+        $("#output").append(h); //表示
+        $("#output").scrollTop($("#output")[0].scrollHeight);
+      });
+    </script>
+  </body>
+</html>
