@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>chat</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -13,7 +13,7 @@
     
     </div>
       <div class="messagearea">
-        <textarea name="text" id="text" cols="65" rows="1" placeholder="Type message"></textarea>
+        <textarea name="text" id="text" cols="80" rows="" placeholder="Type message"></textarea>
         <img src="./send.svg" alt="" id="send" width="20px" />
       </div>
     </div>
@@ -52,7 +52,7 @@
       let name = "相手";
 
       //prompt
-    //   const ask = (prompt("誰だ？"));
+    //   const ask = (prompt("誰だ👻？"));
       if ((prompt("誰だ？"))==="あかり"){
         alert("Hello, Akari.");
         name = "自分";
@@ -104,7 +104,14 @@
 
         $("#output").append(h); //表示
         $("#output").scrollTop($("#output")[0].scrollHeight);
+
+        if(msg === "ハロウィン" || "Halloween"){
+          
+
+        }
       });
+
+
     </script>
   </body>
 </html>

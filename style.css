@@ -1,10 +1,10 @@
 .container {
-    width: 60%;
+    width: 50%;
     margin: 30px auto;
   }
 .chatarea {
     height: 80vh;
-    background: #8DB4E5;
+    background:radial-gradient(80deg,rgba(49, 156, 227, 0.757),rgb(239, 154, 206));
     overflow: scroll;
 }
 #text{
@@ -30,7 +30,7 @@
 .right {
     max-width: 300px;
     width: fit-content;
-    background-color: rgba(236, 34, 192, 0.34);
+    background: radial-gradient(#eeb7ac 0%, #fdcfa6 51%, #efac9794 100%);
     border-radius: 5px;
     margin-right: 8px;
     overflow-wrap: break-word;
@@ -41,7 +41,7 @@
 .left{
 
     width: 100px;
-    background-color: rgb(243, 244, 244);
+    background-color: rgba(236, 243, 243, 0.779);
     border-radius: 5px;
     margin-left: 8px;
 }
